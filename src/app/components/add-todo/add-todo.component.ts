@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
@@ -16,11 +16,14 @@ export class AddTodoComponent implements OnInit {
   }
 
   onSubmit() {
+    const idnumber = Math.floor(Math.random() * 1000000)
+
     const todo = {
       title: this.title,
-      completed: false
+      completed: false,
+      id: idnumber
     }
-
+    console.log(todo)
     this.addTodo.emit(todo)
   }
 
